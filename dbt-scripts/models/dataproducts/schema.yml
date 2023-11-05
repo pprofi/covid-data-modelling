@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: fact_covid19_case
+    description: 'covid19 cases aggregated per country'
+    tests:
+      - unique:
+          column_name: __key_covid_ts_id
+    columns:
+      - name: __key_covid_ts_id
+        description: 'Hash column based on the value in the record'
+        tests:
+          - not_null
+      - name: recorded_at_dt
+        description: 'Cases recorded date'
+      - name: confirmed_cnt
+        description: 'Number of confirmed cases'
+      - name: recovered_cnt
+        description: 'Number of recovered cases'
+      - name: deaths_cnt
+        description: 'Number of deaths'
+      - name: death_percentage
+        description: '% of deaths out of confirmed cases'
+      - name: recovered_percentage
+        description: '% of recovered out of confirmed cases'
+      - name: death_rate_1000
+        description: 'Death rate per 1000 confirmed cases'                
+
+  - name: dim_country
+    description: 'Countries list'
+    tests:
+      - unique:
+          column_name: __key_country_id
+    columns:
+      - name: __key_country_id
+        description: 'Hash column based on the value in the record'
+        tests:
+          - not_null
+      - name: country_name
+        description: 'Name of the country'
+      - name: total_population_cnt
+        description: 'Total population count'
+     
+
+ 

@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: covid19
+    database: "{{ env_var('DBT_ENV_QUALIFIER','dev') }}_rds"
+    schema: covid
+    tables:
+      - name: covid_time_series_combined
+        columns:   
+          - name: date_recorded 
+          - name: country_region
+          - name: province_State
+          - name: confirmed_cnt
+          - name: recovered_cnt
+          - name: deaths_cnt
+          - name: date_loaded
+          - name: source_file       
+      - name: covid_reference_data
+        columns:
+          - name: UID 
+          - name: iso2 
+          - name: iso3
+          - name: code3
+          - name: FIPS
+          - name: admin2
+          - name: province_state
+          - name: country_region
+          - name: lat
+          - name: long_ 
+          - name: combined_key 
+          - name: population_cnt
+          - name: date_loaded
+          - name: source_file
+
+
+      
+
